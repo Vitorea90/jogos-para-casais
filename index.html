@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub de Jogos</title>
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <h1 class="logo">Hub de Jogos 🎮</h1>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Menu">☰</button>
+        </header>
+
+        <div class="content-wrapper">
+            <nav class="sidebar" id="sidebar">
+                <ul class="nav-list">
+                    <li><a href="#" data-view="home" class="nav-link active">Home</a></li>
+                    <li><a href="#" data-view="games" class="nav-link">Jogos</a></li>
+                    <li><a href="#" data-view="about" class="nav-link">Sobre</a></li>
+                </ul>
+            </nav>
+
+            <main class="main-content" id="main-content">
+                <!-- Views serão injetadas aqui via JavaScript -->
+                <section id="home-view" class="view active">
+                    <div class="hero">
+                        <h2>Bem-vindo ao seu Hub de Diversão!</h2>
+                        <p>Escolha um jogo e comece a festa.</p>
+                        <button class="cta-btn" data-action="go-to-games">Ver Jogos</button>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

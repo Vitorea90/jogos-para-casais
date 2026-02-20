@@ -11,55 +11,102 @@ class GameModel {
                 title: '🧩 Nosso Código',
                 description: 'Decifre a mímica do parceiro! Apenas <span style="color: var(--accent-color); font-weight: bold;">Vocês</span> entendem.<br>(Mímicas/Blue)',
                 type: 'mimic-game',
-                theme: 'blue'
+                theme: 'blue',
+                category: ['couple']
             },
             {
                 id: 'eclipse-penumbra',
                 title: '🧊 Eclipse Penumbra',
                 description: 'Conexão e profundidade. <br><span style="color: var(--accent-color); font-weight: bold;">(Leve/Blue)</span>',
                 type: 'card-game',
-                theme: 'blue'
+                theme: 'blue',
+                category: ['couple']
+            },
+            {
+                id: 'sintonia-fina',
+                title: '🎻 Sintonia Fina',
+                description: 'Será que vocês se conhecem mesmo? Responda e veja se o parceiro acerta! <br><span style="color: var(--accent-color); font-weight: bold;">(Casais/Conexão)</span>',
+                type: 'card-game',
+                theme: 'blue',
+                category: ['couple']
             },
             {
                 id: 'leilao-intimidade',
                 title: '⚖️ Leilão de Intimidade',
                 description: 'Quem dá mais por esse desejo? Use seu saldo com sabedoria! <br><span style="color: #FDCB6E; font-weight: bold;">(Casais/Estratégia)</span>',
-                theme: 'yellow'
+                theme: 'yellow',
+                category: ['couple']
             },
             {
                 id: 'eu-nunca',
-                title: '🍺 Eu Nunca',
-                description: 'O clássico, mas com intensidade progressiva. O jogo esquenta conforme as rodadas passam! <br><span style="color: #FDCB6E; font-weight: bold;">(Grupo/Progressivo)</span>',
+                title: '🍺 Eu Nunca Casal',
+                description: 'O clássico, mas com intensidade progressiva. O jogo esquenta conforme as rodadas passam! <br><span style="color: #FDCB6E; font-weight: bold;">(Casal/Progressivo)</span>',
                 type: 'card-game',
-                theme: 'yellow'
+                theme: 'yellow',
+                category: ['couple']
             },
             {
                 id: 'esquenta',
                 title: '🔥 Eclipse Total',
                 description: 'Verdades e desafios intensos. <br><span style="color: var(--danger-color); font-weight: bold;">(Pesado/Red)</span>',
                 type: 'card-game',
-                theme: 'red'
+                theme: 'red',
+                category: ['couple']
             },
             {
                 id: 'desejos-binarios',
                 title: '🌌 Desejos Binários',
                 description: 'Dê "Sim" ou "Não" para fantasias. Descubra onde vocês combinam! <br><span style="color: var(--danger-color); font-weight: bold;">(Casais/Red)</span>',
                 type: 'binary-game',
-                theme: 'red'
+                theme: 'red',
+                category: ['couple']
             },
             {
                 id: 'roleta-temperatura',
                 title: '🎡 Roleta da Temperatura',
                 description: 'Gire para descobrir o próximo passo. A temperatura sobe com o tempo! <br><span style="color: var(--danger-color); font-weight: bold;">(Casais/Interativo)</span>',
                 type: 'roulette-game',
-                theme: 'red'
+                theme: 'red',
+                category: ['couple']
             },
             {
                 id: 'dados-prazer',
                 title: '🎲 Dados do Prazer',
                 description: 'Lance os dados e descubra a combinação: Posição + Modificador. <br><span style="color: var(--danger-color); font-weight: bold;">(Casais/Criativo)</span>',
-                theme: 'red'
-            }
+                theme: 'red',
+                category: ['couple']
+            },
+            {
+                id: 'termometro-prazer',
+                title: '🌡️ Termômetro do Prazer',
+                description: 'Resista à provocação enquanto a temperatura sobe. O fundo muda de cor conforme a tensão aumenta! <br><span style="color: #7f1d1d; font-weight: bold;">(Casais/Resistência)</span>',
+                theme: 'red',
+                category: ['couple']
+            },
+            {
+                id: 'eclipse-social',
+                title: '🎉 Eclipse Social',
+                description: 'Verdades leves, desafios engraçados e bônus caóticos para jogar com amigos! <br><span style="color: var(--primary-color); font-weight: bold;">(Grupo/Diversão)</span>',
+                type: 'card-game',
+                theme: 'blue',
+                category: ['group']
+            },
+            {
+                id: 'quem-mais-provavel',
+                title: '☝️ Quem é Mais Provável?',
+                description: 'Quem do grupo tem mais chance de...? Todos apontam na conta de 3! <br><span style="color: var(--primary-color); font-weight: bold;">(Grupo/Social)</span>',
+                type: 'card-game',
+                theme: 'blue',
+                category: ['group']
+            },
+            {
+                id: 'eu-nunca-festa',
+                title: '🍹 Eu Nunca Festa',
+                description: 'A versão clássica para rir com os amigos de situações engraçadas. <br><span style="color: var(--primary-color); font-weight: bold;">(Grupo/Social)</span>',
+                type: 'card-game',
+                theme: 'blue',
+                category: ['group']
+            },
         ];
 
 
@@ -107,9 +154,9 @@ class GameModel {
             { category: 'Estratégico', text: 'Anular Dívida: Cancelo um item que perdi anteriormente' },
             { category: 'Estratégico', text: 'Roubo: Pego um item do seu inventário para mim' },
             { category: 'Estratégico', text: 'Veto: Cancelo seu lance nessa rodada (se eu ganhar essa carta)' },
-            { category: 'Estratégico', text: 'Saldo Extra: Ganho +20 moedas agora (banco paga)' },
-            { category: 'Estratégico', text: 'Taxação: Você me paga 10 moedas agora' },
-            { category: 'Estratégico', text: 'Reembolso: Recupero 50% do que gastei na última compra' },
+            { category: 'Estratégico', text: 'Saldo Extra: Ganho +20 moedas agora (banco paga)', effect: 'add_credit', value: 20 },
+            { category: 'Estratégico', text: 'Taxação: Você me paga 10 moedas agora', effect: 'tax', value: 10 },
+            { category: 'Estratégico', text: 'Reembolso: Recupero 50% do que gastei na última compra', effect: 'refund', value: 0.5 },
             { category: 'Estratégico', text: 'Silêncio: Você não pode falar por 30 minutos' },
             { category: 'Estratégico', text: 'Espelho: O que você mandar eu fazer, você faz também' }
         ];
@@ -162,6 +209,271 @@ class GameModel {
             { category: 'Momentos Específicos', text: 'Imite o parceiro tentando fazer um exercício físico difícil.' },
             { category: 'Momentos Específicos', text: 'Imite o parceiro reagindo a uma notícia muito boa.' }
         ];
+
+        this.eclipseSocialDeck = [
+            // VERDADES (50)
+            { type: 'verdade', text: 'Qual foi a maior vergonha que você já passou na escola?' },
+            { type: 'verdade', text: 'Qual mania estranha você tem escondida?' },
+            { type: 'verdade', text: 'Qual foi sua pior apresentação em público?' },
+            { type: 'verdade', text: 'Já tropeçou feio na frente de muita gente?' },
+            { type: 'verdade', text: 'Qual foi a desculpa mais ridícula que você já deu?' },
+            { type: 'verdade', text: 'Já falou algo achando que estava arrasando e ficou climão?' },
+            { type: 'verdade', text: 'Qual foi o pior corte de cabelo da sua vida?' },
+            { type: 'verdade', text: 'Já mandou áudio errado em grupo?' },
+            { type: 'verdade', text: 'Qual hábito estranho você tem quando está sozinho?' },
+            { type: 'verdade', text: 'Já pagou mico tentando impressionar alguém?' },
+            { type: 'verdade', text: 'Qual foi sua pior nota na escola?' },
+            { type: 'verdade', text: 'Já esqueceu o nome de alguém importante?' },
+            { type: 'verdade', text: 'Já caiu em fake news?' },
+            { type: 'verdade', text: 'Qual comida você ama mas tem vergonha de admitir?' },
+            { type: 'verdade', text: 'Já riu em momento inapropriado?' },
+            { type: 'verdade', text: 'Já chamou professor pelo nome errado?' },
+            { type: 'verdade', text: 'Qual modinha você seguiu e hoje se arrepende?' },
+            { type: 'verdade', text: 'Já saiu de casa com roupa do avesso?' },
+            { type: 'verdade', text: 'Qual foi sua maior preguiça pública?' },
+            { type: 'verdade', text: 'Já confundiu alguém na rua?' },
+            { type: 'verdade', text: 'Qual foi sua fase mais vergonhosa?' },
+            { type: 'verdade', text: 'Já tentou cantar e desafinou feio?' },
+            { type: 'verdade', text: 'Já fingiu que entendeu algo que não entendeu?' },
+            { type: 'verdade', text: 'Qual meme representa sua vida?' },
+            { type: 'verdade', text: 'Já esqueceu aniversário de alguém importante?' },
+            { type: 'verdade', text: 'Qual foi sua maior gafe?' },
+            { type: 'verdade', text: 'Já tentou contar piada e ninguém riu?' },
+            { type: 'verdade', text: 'Já mandou mensagem no grupo errado?' },
+            { type: 'verdade', text: 'Qual foi sua pior fase fashion?' },
+            { type: 'verdade', text: 'Já caiu na escada?' },
+            { type: 'verdade', text: 'Já ficou preso(a) em algum lugar?' },
+            { type: 'verdade', text: 'Qual foi sua maior procrastinação?' },
+            { type: 'verdade', text: 'Já fingiu estar ocupado?' },
+            { type: 'verdade', text: 'Qual foi sua maior vergonha em viagem?' },
+            { type: 'verdade', text: 'Já falou mal de algo e depois descobriu que a pessoa gostava?' },
+            { type: 'verdade', text: 'Já entrou no banheiro errado?' },
+            { type: 'verdade', text: 'Já pagou mico no esporte?' },
+            { type: 'verdade', text: 'Qual foi sua maior ilusão?' },
+            { type: 'verdade', text: 'Já esqueceu o que ia falar no meio da frase?' },
+            { type: 'verdade', text: 'Já caiu dormindo em aula?' },
+            { type: 'verdade', text: 'Qual foi sua pior tentativa de cozinhar?' },
+            { type: 'verdade', text: 'Já tropeçou em público e fingiu que nada aconteceu?' },
+            { type: 'verdade', text: 'Já usou filtro demais numa foto?' },
+            { type: 'verdade', text: 'Já errou a letra de música cantando alto?' },
+            { type: 'verdade', text: 'Já foi o último escolhido em algo?' },
+            { type: 'verdade', text: 'Já fez drama desnecessário?' },
+            { type: 'verdade', text: 'Já teve medo bobo?' },
+            { type: 'verdade', text: 'Qual talento inútil você tem?' },
+            { type: 'verdade', text: 'Já derrubou comida na roupa antes de sair?' },
+            { type: 'verdade', text: 'Qual foi seu maior “eu era feliz e não sabia”?' },
+
+            // DESAFIOS (50)
+            { type: 'desafio', text: 'Fale com sotaque diferente por 2 rodadas.' },
+            { type: 'desafio', text: 'Dance como se estivesse sozinho no quarto.' },
+            { type: 'desafio', text: 'Faça 30 segundos de passarela dramática.' },
+            { type: 'desafio', text: 'Imite um animal escolhido pelo grupo.' },
+            { type: 'desafio', text: 'Faça uma propaganda improvisada de uma cadeira.' },
+            { type: 'desafio', text: 'Conte uma piada ruim.' },
+            { type: 'desafio', text: 'Fique congelado por 1 rodada.' },
+            { type: 'desafio', text: 'Faça um discurso motivacional exagerado.' },
+            { type: 'desafio', text: 'Imite um narrador de futebol por 1 minuto.' },
+            { type: 'desafio', text: 'Ande como modelo até a próxima rodada.' },
+            { type: 'desafio', text: 'Faça caretas até alguém rir.' },
+            { type: 'desafio', text: 'Faça 15 polichinelos gritando “ECLIPSE”.' },
+            { type: 'desafio', text: 'Fale cantando por 1 rodada.' },
+            { type: 'desafio', text: 'Finja que é um robô.' },
+            { type: 'desafio', text: 'Faça uma cena de novela dramática.' },
+            { type: 'desafio', text: 'Recrie uma pose famosa de super-herói.' },
+            { type: 'desafio', text: 'Equilibre algo na cabeça por 30 segundos.' },
+            { type: 'desafio', text: 'Faça voz de desenho animado.' },
+            { type: 'desafio', text: 'Dê um giro e pose final.' },
+            { type: 'desafio', text: 'Imite alguém da roda (sem ofender).' },
+            { type: 'desafio', text: 'Fale o alfabeto ao contrário (ou tente).' },
+            { type: 'desafio', text: 'Conte uma história como se fosse suspense.' },
+            { type: 'desafio', text: 'Faça uma coreografia inventada.' },
+            { type: 'desafio', text: 'Desfile como se tivesse vencido concurso.' },
+            { type: 'desafio', text: 'Fique 1 rodada sem rir.' },
+            { type: 'desafio', text: 'Fale apenas sussurrando por 1 rodada.' },
+            { type: 'desafio', text: 'Faça 1 minuto de stand-up improvisado.' },
+            { type: 'desafio', text: 'Ande como um vilão.' },
+            { type: 'desafio', text: 'Faça uma entrevista fictícia com você mesmo.' },
+            { type: 'desafio', text: 'Cante parabéns como ópera.' },
+            { type: 'desafio', text: 'Imite risada maligna.' },
+            { type: 'desafio', text: 'Faça um comercial de shampoo imaginário.' },
+            { type: 'desafio', text: 'Conte uma história exagerando tudo.' },
+            { type: 'desafio', text: 'Fale como narrador de documentário.' },
+            { type: 'desafio', text: 'Faça uma pose estátua por 1 minuto.' },
+            { type: 'desafio', text: 'Recrie cena de filme famoso.' },
+            { type: 'desafio', text: 'Dance sem mexer os braços.' },
+            { type: 'desafio', text: 'Faça um tutorial inútil (ex: como sentar).' },
+            { type: 'desafio', text: 'Fale só em perguntas por 1 rodada.' },
+            { type: 'desafio', text: 'Imite alguém acordando atrasado.' },
+            { type: 'desafio', text: 'Finja que ganhou um prêmio.' },
+            { type: 'desafio', text: 'Faça um rap improvisado.' },
+            { type: 'desafio', text: 'Faça cara de vilão por 30 segundos.' },
+            { type: 'desafio', text: 'Conte um segredo falso convincente.' },
+            { type: 'desafio', text: 'Faça uma caminhada dramática.' },
+            { type: 'desafio', text: 'Fale como se estivesse chorando.' },
+            { type: 'desafio', text: 'Faça um som de efeito para tudo que alguém fizer por 1 rodada.' },
+            { type: 'desafio', text: 'Faça pose de influencer.' },
+            { type: 'desafio', text: 'Descreva alguém como se fosse personagem épico.' },
+            { type: 'desafio', text: 'Escolha alguém para fazer desafio com você.' },
+
+            // BÔNUS (50)
+            { type: 'bonus', text: 'Pular um desafio.' },
+            { type: 'bonus', text: 'Passar desafio para outro.' },
+            { type: 'bonus', text: 'Duplicar desafio de alguém.' },
+            { type: 'bonus', text: 'Criar mini regra por 2 rodadas.' },
+            { type: 'bonus', text: 'Inverter ordem do jogo.' },
+            { type: 'bonus', text: 'Trocar lugar com qualquer pessoa.' },
+            { type: 'bonus', text: 'Forçar alguém a responder 2 verdades.' },
+            { type: 'bonus', text: 'Escolher dupla obrigatória.' },
+            { type: 'bonus', text: 'Criar desafio coletivo.' },
+            { type: 'bonus', text: 'Dar imunidade por 1 rodada.' },
+            { type: 'bonus', text: 'Criar rodada só de mímica.' },
+            { type: 'bonus', text: 'Criar rodada só de desafios.' },
+            { type: 'bonus', text: 'Criar rodada relâmpago.' },
+            { type: 'bonus', text: 'Trocar cartas com alguém.' },
+            { type: 'bonus', text: 'Roubar vez.' },
+            { type: 'bonus', text: 'Criar regra do silêncio.' },
+            { type: 'bonus', text: 'Criar regra da risada proibida.' },
+            { type: 'bonus', text: 'Escolher líder da rodada.' },
+            { type: 'bonus', text: 'Mudar tema para “escola”.' },
+            { type: 'bonus', text: 'Mudar tema para “viagens”.' },
+            { type: 'bonus', text: 'Obrigar alguém a falar rimando.' },
+            { type: 'bonus', text: 'Criar punição leve.' },
+            { type: 'bonus', text: 'Escolher alguém para fazer discurso.' },
+            { type: 'bonus', text: 'Fazer dois jogarem juntos.' },
+            { type: 'bonus', text: 'Escolher próxima vítima.' },
+            { type: 'bonus', text: 'Criar regra de voz engraçada.' },
+            { type: 'bonus', text: 'Dar imunidade dupla.' },
+            { type: 'bonus', text: 'Criar desafio em dupla.' },
+            { type: 'bonus', text: 'Criar desafio em trio.' },
+            { type: 'bonus', text: 'Escolher alguém para imitar outro.' },
+            { type: 'bonus', text: 'Criar rodada temática.' },
+            { type: 'bonus', text: 'Escolher alguém para contar história.' },
+            { type: 'bonus', text: 'Mudar sentido (verdade vira desafio).' },
+            { type: 'bonus', text: 'Criar mini competição.' },
+            { type: 'bonus', text: 'Fazer alguém elogiar todos.' },
+            { type: 'bonus', text: 'Obrigar alguém a narrar a rodada.' },
+            { type: 'bonus', text: 'Criar rodada dramática.' },
+            { type: 'bonus', text: 'Criar rodada silenciosa.' },
+            { type: 'bonus', text: 'Criar rodada só de caretas.' },
+            { type: 'bonus', text: 'Criar rodada rápida (10s por pessoa).' },
+            { type: 'bonus', text: 'Escolher alguém para fazer mímica.' },
+            { type: 'bonus', text: 'Criar desafio físico leve.' },
+            { type: 'bonus', text: 'Criar desafio teatral.' },
+            { type: 'bonus', text: 'Criar desafio musical.' },
+            { type: 'bonus', text: 'Criar desafio criativo.' },
+            { type: 'bonus', text: 'Escolher tema secreto.' },
+            { type: 'bonus', text: 'Trocar cartas entre dois.' },
+            { type: 'bonus', text: 'Cancelar último desafio.' },
+            { type: 'bonus', text: 'Criar regra maluca temporária.' },
+            { type: 'bonus', text: 'Ativar “Eclipse Supremo” (todos fazem desafio).' }
+        ];
+
+        this.usedEclipseSocialIndices = new Set();
+
+        // --- Deck Quem é Mais Provável? (30 Cartas) ---
+        this.quemMaisProvavelDeck = [
+            { text: "Quem é mais provável de esquecer onde estacionou o carro?" },
+            { text: "Quem é mais provável de gastar todo o salário em um dia?" },
+            { text: "Quem é mais provável de chorar assistindo um comercial de margarina?" },
+            { text: "Quem é mais provável de ser preso por engano?" },
+            { text: "Quem é mais provável de virar um meme na internet?" },
+            { text: "Quem é mais provável de sobreviver a um apocalipse zumbi?" },
+            { text: "Quem é mais provável de ganhar na loteria e não contar para ninguém?" },
+            { text: "Quem é mais provável de viajar para o lugar errado?" },
+            { text: "Quem é mais provável de se tornar um eremita?" },
+            { text: "Quem é mais provável de dar PT em um open bar?" },
+            { text: "Quem é mais provável de casar com um completo estranho em Vegas?" },
+            { text: "Quem é mais provável de esquecer o próprio aniversário?" },
+            { text: "Quem é mais provável de adotar 10 gatos?" },
+            { text: "Quem é mais provável de ser a pessoa mais rica da roda?" },
+            { text: "Quem é mais provável de sumir e nunca mais dar notícias?" },
+            { text: "Quem é mais provável de enviar mensagem para o ex às 3 da manhã?" },
+            { text: "Quem é mais provável de tropeçar no próprio pé?" },
+            { text: "Quem é mais provável de brigar com um estranho na rua?" },
+            { text: "Quem é mais provável de entrar na casa errada?" },
+            { text: "Quem é mais provável de se tornar um influencer famoso?" },
+            { text: "Quem é mais provável de contar um segredo sem querer?" },
+            { text: "Quem é mais provável de rir em um velório?" },
+            { text: "Quem é mais provável de se perder dentro de um shopping?" },
+            { text: "Quem é mais provável de falar dormindo?" },
+            { text: "Quem é mais provável de ter uma queda por um personagem de desenho?" },
+            { text: "Quem é mais provável de ser a primeira pessoa a ser abduzida por aliens?" },
+            { text: "Quem é mais provável de fazer drama por causa de um resfriado?" },
+            { text: "Quem é mais provável de esquecer o nome de alguém logo após ser apresentado?" },
+            { text: "Quem é mais provável de quebrar o celular no primeiro dia de uso?" },
+            { text: "Quem é mais provável de ficar famoso por algo estúpido?" }
+        ];
+        this.usedQuemMaisProvavelIndices = new Set();
+
+        // --- Deck Eu Nunca Festa (30 Cartas) ---
+        this.euNuncaGrupoDeck = [
+            { text: "Eu nunca usei o cartão de outra pessoa escondido." },
+            { text: "Eu nunca fingi que não vi um conhecido na rua." },
+            { text: "Eu nunca menti em uma entrevista de emprego." },
+            { text: "Eu nunca saí de casa sem roupa de baixo." },
+            { text: "Eu nunca peguei algo emprestado e nunca devolvi." },
+            { text: "Eu nunca dei um nome falso para alguém em uma festa." },
+            { text: "Eu nunca nadei pelado em público." },
+            { text: "Eu nunca vomitei em um táxi ou transporte de aplicativo." },
+            { text: "Eu nunca stalkeei um ex até as fotos de 2015." },
+            { text: "Eu nunca usei a escova de dentes de outra pessoa." },
+            { text: "Eu nunca fingi estar falando no celular para evitar alguém." },
+            { text: "Eu nunca furei fila descaradamente." },
+            { text: "Eu nunca fui expulso de uma festa ou bar." },
+            { text: "Eu nunca beijei alguém da roda." },
+            { text: "Eu nunca entrei em uma festa sem ser convidado." },
+            { text: "Eu nunca menti para meus pais sobre onde estava." },
+            { text: "Eu nunca comi algo que caiu no chão (3 segundos!)." },
+            { text: "Eu nunca fiz xixi na piscina." },
+            { text: "Eu nunca contei um segredo que jurei guardar." },
+            { text: "Eu nunca fui parado em uma blitz." },
+            { text: "Eu nunca menti sobre ter lido um livro ou visto um filme." },
+            { text: "Eu nunca tive um crush no irmão/irmã de um amigo." },
+            { text: "Eu nunca usei o Wi-Fi do vizinho sem permissão." },
+            { text: "Eu nunca quebrei algo na casa de alguém e fingi que não fomos nós." },
+            { text: "Eu nunca dormi no cinema." },
+            { text: "Eu nunca mandei um 'oi sumido' por carência." },
+            { text: "Eu nunca usei uma roupa e devolvi para a loja depois." },
+            { text: "Eu nunca pesquisei meu próprio nome no Google." },
+            { text: "Eu nunca menti a idade para parecer mais velho/novo." },
+            { text: "Eu nunca dei uma desculpa falsa para faltar ao trabalho/estudo." }
+        ];
+        this.usedEuNuncaGrupoIndices = new Set();
+
+        // --- Deck Sintonia Fina (30 Cartas) ---
+        this.sintoniaFinaDeck = [
+            { text: "Qual é a maior mania irritante do parceiro?" },
+            { text: "Qual foi o lugar do primeiro encontro oficial?" },
+            { text: "Quem gasta mais dinheiro no dia a dia?" },
+            { text: "Qual é o maior sonho de infância do parceiro que ele ainda não realizou?" },
+            { text: "Quem é mais provável de começar uma discussão?" },
+            { text: "Qual é a comida favorita do parceiro que ele pediria como última refeição?" },
+            { text: "Quem demora mais para se arrumar para sair?" },
+            { text: "Qual é o maior medo bobo do parceiro?" },
+            { text: "Para onde seria a viagem dos sonhos que vocês fariam amanhã?" },
+            { text: "Quem disse 'eu te amo' primeiro?" },
+            { text: "Qual é a música que define o relacionamento de vocês?" },
+            { text: "Quem é mais organizado em casa?" },
+            { text: "Qual é a primeira coisa que o parceiro faz ao acordar?" },
+            { text: "Qual é o talento escondido do parceiro que pouca gente sabe?" },
+            { text: "Quem é o mais ciumento da relação?" },
+            { text: "Qual foi o presente mais marcante que um deu ao outro?" },
+            { text: "Quem é mais provável de esquecer uma data especial?" },
+            { text: "Qual é a cor favorita do parceiro?" },
+            { text: "Quem é mais explorador e gosta de aventuras?" },
+            { text: "O que o parceiro mais gosta de fazer no tempo livre?" },
+            { text: "Quem é o mais engraçado/palhaço do casal?" },
+            { text: "Qual é o hábito do parceiro que você acha mais fofo?" },
+            { text: "Quem cozinha melhor?" },
+            { text: "Qual é a série ou filme favorito do parceiro?" },
+            { text: "Quem é mais viciado em celular?" },
+            { text: "Qual é a maior qualidade que o parceiro vê em você?" },
+            { text: "Quem é mais 'mão de vaca'?" },
+            { text: "Qual é o destino de viagem que o parceiro detestaria ir?" },
+            { text: "Quem é mais provável de se perder dirigindo?" },
+            { text: "O que o parceiro faria se ganhasse na loteria hoje?" }
+        ];
+        this.usedSintoniaFinaIndices = new Set();
 
         this.mimicState = {
             gameActive: false,
@@ -731,6 +1043,42 @@ class GameModel {
             timeLeft: 0
         };
 
+        this.escaladaDeck = [
+            "Apenas contato visual profundo, sem se tocarem por 30 segundos.",
+            "Apenas carícias suaves com as pontas dos dedos no rosto e pescoço.",
+            "Sinta a respiração um do outro bem de perto, mas ainda sem beijar na boca.",
+            "Adicione beijos lentos e ternos, explorando apenas os lábios.",
+            "Leves mordidas e beijos no lóbulo da orelha e no maxilar.",
+            "Mãos permitidas apenas nas costas e ombros, massageando suavemente.",
+            "Sussurre no ouvido do parceiro uma fantasia que você tem e quer realizar hoje.",
+            "Mãos liberadas para qualquer lugar acima da cintura, explorando cada curva.",
+            "Fechem os olhos e foquem apenas no tato, sentindo cada centímetro da pele exposta.",
+            "Explore o pescoço do parceiro com beijos úmidos e leves chupões.",
+            "Aumente a intensidade do beijo na boca, adicionando língua e paixão.",
+            "Passe as unhas de leve pelos braços, pernas e costelas do outro, arrepiando a pele.",
+            "Tirem uma peça de roupa de cada um (acessórios, calçados ou meias contam).",
+            "Usem as mãos livremente para explorar todo o corpo, mas ainda sem tocar nas zonas íntimas diretas.",
+            "O parceiro ativo deve morder suavemente o lábio inferior do outro, puxando levemente.",
+            "Tirem mais uma peça de roupa, deixando mais pele à mostra.",
+            "Provocação total: beijos úmidos e leves mordidas por todo o corpo, exceto nas zonas mais íntimas.",
+            "Usem o corpo um do outro para criar fricção, esfregando-se, sem usar as mãos por 30 segundos.",
+            "Comecem as preliminares com foco exclusivo na região do umbigo e da barriga (beijos, língua, carícias).",
+            "A intensidade agora é máxima: mãos e bocas liberadas em **qualquer lugar**, exceto o ponto de não-retorno.",
+            "Tirem a última peça de roupa que está impedindo o contato total da pele.",
+            "Preliminares completas: Beijem e toquem-se como se fosse a última vez, levando ao limite.",
+            "Sussurrem exatamente o que vocês querem fazer um com o outro AGORA.",
+            "Liberação quase total: O parceiro ativo tem 1 minuto para levar o outro ao ápice sem chegar ao final.",
+            "Liberação total: O tempo de provocar acabou! O prazer é o único guia agora."
+        ];
+
+        this.termometroState = {
+            startTime: null,
+            elapsedSeconds: 0,
+            interval: null,
+            instructionIndex: 0,
+            isActive: false
+        };
+
         // Carregar estado salvo ou iniciar
         this.currentView = localStorage.getItem('hub_currentView') || 'home';
         this.currentGameId = localStorage.getItem('hub_currentGameId') || null;
@@ -747,16 +1095,44 @@ class GameModel {
         }
 
         let deck = [];
+        let usedSet = null;
+
         if (this.currentGameId === 'esquenta') {
             deck = this.esquentaDeck;
         } else if (this.currentGameId === 'eclipse-penumbra') {
             deck = this.eclipsePenumbraDeck;
+        } else if (this.currentGameId === 'eclipse-social') {
+            deck = this.eclipseSocialDeck;
+            usedSet = this.usedEclipseSocialIndices;
+        } else if (this.currentGameId === 'quem-mais-provavel') {
+            deck = this.quemMaisProvavelDeck;
+            usedSet = this.usedQuemMaisProvavelIndices;
+        } else if (this.currentGameId === 'eu-nunca-festa') {
+            deck = this.euNuncaGrupoDeck;
+            usedSet = this.usedEuNuncaGrupoIndices;
+        } else if (this.currentGameId === 'sintonia-fina') {
+            deck = this.sintoniaFinaDeck;
+            usedSet = this.usedSintoniaFinaIndices;
         }
 
         if (deck.length === 0) return { type: 'erro', text: 'Baralho vazio ou erro.', color: 'grey' };
 
-        const randomIndex = Math.floor(Math.random() * deck.length);
-        this.currentCard = deck[randomIndex];
+        // Sorteio com controle de usados (específico para Eclipse Social por enquanto)
+        if (usedSet) {
+            if (usedSet.size >= deck.length) usedSet.clear();
+
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * deck.length);
+            } while (usedSet.has(randomIndex));
+
+            usedSet.add(randomIndex);
+            this.currentCard = deck[randomIndex];
+        } else {
+            const randomIndex = Math.floor(Math.random() * deck.length);
+            this.currentCard = deck[randomIndex];
+        }
+
         return this.currentCard;
     }
 
@@ -935,6 +1311,8 @@ class GameModel {
             saldoP2: 100,
             inventoryP1: [],
             inventoryP2: [],
+            lastGastoP1: 0,
+            lastGastoP2: 0,
             currentItem: null,
             deck: [...this.auctionDeck], // Cópia para manipular
             message: "Façam seus lances!",
@@ -966,12 +1344,16 @@ class GameModel {
 
         if (p1 > p2) {
             state.saldoP1 -= p1;
+            state.lastGastoP1 = p1;
             state.inventoryP1.push(state.currentItem);
             resultMsg = `Jogador 1 venceu com ${p1}! (-${p1} saldo)`;
+            this.applyAuctionEffect(1, 2);
         } else if (p2 > p1) {
             state.saldoP2 -= p2;
+            state.lastGastoP2 = p2;
             state.inventoryP2.push(state.currentItem);
             resultMsg = `Jogador 2 venceu com ${p2}! (-${p2} saldo)`;
+            this.applyAuctionEffect(2, 1);
         } else {
             // Empate: item volta pro deck
             state.deck.push(state.currentItem);
@@ -980,7 +1362,7 @@ class GameModel {
 
         // Verifica fim de jogo por saldo (opcional, mas pedido: "jogo acaba quando um saldo chega a zero ou prêmios acabam")
         // Mas se saldo zero, o jogador ainda pode jogar se o outro tiver saldo? A regra diz "O jogo acaba quando um saldo chega a zero".
-        if (state.saldoP1 <= 0 || state.saldoP2 <= 0) {
+        if (state.saldoP1 <= 0 && state.saldoP2 <= 0) {
             state.gameOver = true;
         } else {
             this.drawAuctionItem(); // Próximo item
@@ -992,6 +1374,39 @@ class GameModel {
 
         state.message = resultMsg;
         return { success: true, msg: resultMsg };
+    }
+
+    applyAuctionEffect(winnerNum, loserNum) {
+        const state = this.auctionState;
+        const card = state.currentItem;
+        if (!card || !card.effect) return;
+
+        const winnerSaldoKey = `saldoP${winnerNum}`;
+        const loserSaldoKey = `saldoP${loserNum}`;
+        const lastGastoKey = `lastGastoP${winnerNum}`;
+
+        switch (card.effect) {
+            case 'add_credit':
+                state[winnerSaldoKey] += card.value;
+                state.message += ` | Bônus: +${card.value} moedas!`;
+                break;
+            case 'tax':
+                // Jogador que ganhou a carta recebe 10 do outro
+                state[loserSaldoKey] -= card.value;
+                state[winnerSaldoKey] += card.value;
+                state.message += ` | Taxação: Recebeu ${card.value} do oponente!`;
+                break;
+            case 'refund':
+                // Recupera 50% do gasto ATUAL (já que a função é chamada logo após deduzir o saldo)
+                // Ou seria da compra anterior? A carta diz "última compra".
+                // Se eu acabei de comprar essa carta, ela é a "última compra"?
+                // Geralmente cartas estratégicas agem sobre a transação que as adquiriu ou a anterior.
+                // Vou implementar como reembolso da transação ATUAL para simplificar e ser imediato.
+                const refundAmount = Math.round(state[lastGastoKey] * card.value);
+                state[winnerSaldoKey] += refundAmount;
+                state.message += ` | Reembolso: +${refundAmount} moedas (50%)!`;
+                break;
+        }
     }
 
     // --- Lógica Dados do Prazer ---
@@ -1074,8 +1489,11 @@ class GameView {
             case 'home':
                 this._renderHome();
                 break;
-            case 'games':
-                this._renderGamesList(data);
+            case 'games-couple':
+                this._renderGamesList(data, 'de Casal');
+                break;
+            case 'games-group':
+                this._renderGamesList(data, 'em Grupo');
                 break;
             case 'game-playing':
                 this._renderGameInterface(data);
@@ -1094,17 +1512,28 @@ class GameView {
         section.innerHTML = `
             <div class="hero">
                 <h2>Bem-vindo ao Hub de Jogos! 🎮</h2>
-                <p>A melhor coleção de jogos para animar o seu dia.</p>
-                <button class="cta-btn" data-action="nav-games">Ver Jogos Disponíveis</button>
+                <p>Escolha como você quer se divertir hoje:</p>
+            </div>
+            <div class="category-grid">
+                <div class="category-card" data-action="nav-category" data-view="games-couple">
+                    <div class="category-icon">❤️</div>
+                    <h3>Jogos de Casal</h3>
+                    <p>Momentos a dois, conexão e diversão picante.</p>
+                </div>
+                <div class="category-card" data-action="nav-category" data-view="games-group">
+                    <div class="category-icon">🍻</div>
+                    <h3>Jogos em Grupo</h3>
+                    <p>Ria com os amigos e quebre o gelo na festa!</p>
+                </div>
             </div>
         `;
         this.mainContent.appendChild(section);
     }
 
-    _renderGamesList(games) {
+    _renderGamesList(games, categoryTitle = 'Disponíveis') {
         const section = document.createElement('section');
         section.className = 'view active';
-        section.innerHTML = '<h2>🎮 Jogos Disponíveis</h2><div class="games-grid"></div>';
+        section.innerHTML = `<h2>🎮 Jogos ${categoryTitle}</h2><div class="games-grid"></div>`;
 
         const grid = section.querySelector('.games-grid');
 
@@ -1130,16 +1559,22 @@ class GameView {
         const section = document.createElement('section');
         section.className = `view active game-interface theme-${game.theme || 'default'}`;
 
-        if (game.id === 'esquenta' || game.id === 'eclipse-penumbra' || game.id === 'eu-nunca' || game.id === 'nosso-codigo' || game.id === 'leilao-intimidade') {
+        if (game.id === 'esquenta' || game.id === 'eclipse-penumbra' || game.id === 'eu-nunca' || game.id === 'nosso-codigo' || game.id === 'leilao-intimidade' || game.id === 'eclipse-social' || game.id === 'quem-mais-provavel' || game.id === 'eu-nunca-festa' || game.id === 'sintonia-fina') {
 
             let cardContent = `
                 <p class="card-type">Toque abaixo para começar</p>
                 <h3 class="card-text">Pronto?</h3>
             `;
 
+            let nextBtnText = 'Próxima Carta 🎲';
+            if (game.id === 'eu-nunca') nextBtnText = 'Eu Nunca Casal... 🍺';
+            else if (game.id === 'eu-nunca-festa') nextBtnText = 'Eu Nunca Festa... 🍻';
+            else if (game.id === 'quem-mais-provavel') nextBtnText = 'Quem será? ☝️';
+            else if (game.id === 'sintonia-fina') nextBtnText = 'Ver Nossa Sintonia 🎻';
+
             let controls = `
                 <button class="cta-btn" data-action="next-card">
-                    ${game.id === 'eu-nunca' ? 'Eu Nunca... 🍺' : 'Próxima Carta 🎲'}
+                    ${nextBtnText}
                 </button>
             `;
 
@@ -1218,15 +1653,15 @@ class GameView {
                             <p>Saldo Final: P1 (${saldoP1}) | P2 (${saldoP2})</p>
                             <div style="display: flex; gap: 1rem; margin-top: 1rem; text-align: left;">
                                 <div style="flex: 1; background: #f0f0f0; padding: 10px; border-radius: 8px;">
-                                    <strong>Dívidas do Jogador 1:</strong>
-                                    <ul style="font-size: 0.8rem; padding-left: 1rem;">${p2Items || '<li>Nenhuma dívida!</li>'}</ul>
+                                    <strong>Prêmios do Jogador 1:</strong>
+                                    <ul style="font-size: 0.8rem; padding-left: 1rem;">${p1Items || '<li>Nenhum prêmio!</li>'}</ul>
                                 </div>
                                 <div style="flex: 1; background: #f0f0f0; padding: 10px; border-radius: 8px;">
-                                    <strong>Dívidas do Jogador 2:</strong>
-                                    <ul style="font-size: 0.8rem; padding-left: 1rem;">${p1Items || '<li>Nenhuma dívida!</li>'}</ul>
+                                    <strong>Prêmios do Jogador 2:</strong>
+                                    <ul style="font-size: 0.8rem; padding-left: 1rem;">${p2Items || '<li>Nenhum prêmio!</li>'}</ul>
                                 </div>
                             </div>
-                            <p style="margin-top: 1rem; font-size: 0.9rem;">(Quem ganhou o item é quem RECEBE, então o outro PAGA/FAZ a ação)</p>
+                            <p style="margin-top: 1rem; font-size: 0.9rem;">(Estes são os itens que cada um conquistou no leilão!)</p>
                         </div>
                     `;
                     controls = `
@@ -1287,7 +1722,7 @@ class GameView {
                 </div>
                 <div class="game-controls">
                      <button class="cta-btn" data-action="next-card">
-                        ${game.id === 'eu-nunca' ? 'Eu Nunca... 🍺' : 'Próxima Carta 🎲'}
+                        ${game.id === 'eu-nunca' ? 'Eu Nunca Casal... 🍺' : 'Próxima Carta 🎲'}
                     </button>
                     <button class="cta-btn" data-action="nav-games" style="background-color: var(--text-light)">Sair</button>
                 </div>
@@ -1426,6 +1861,27 @@ class GameView {
                     <button class="cta-btn" data-action="dice-roll" style="background: linear-gradient(135deg, #a29bfe, #6c5ce7);">Lançar Dados 🎲</button>
                     <button class="cta-btn" data-action="dice-start-timer" id="dice-timer-btn" style="display: none; background: linear-gradient(135deg, #6c5ce7, #5a4bd1); color: white;">Iniciar Turno ⏱️ (5min)</button>
                     <button class="cta-btn" data-action="nav-games" style="background-color: var(--text-light)">Sair</button>
+                </div>
+            `;
+        } else if (game.id === 'termometro-prazer') {
+            section.innerHTML = `
+                <div id="termometro-app" class="termometro-wrapper">
+                    <h2 class="termometro-title">${game.title}</h2>
+                    
+                    <div class="termometro-progress-container">
+                        <div id="termometro-progress-bar" class="termometro-progress-bar"></div>
+                    </div>
+
+                    <div class="termometro-timer-display" id="termometro-timer">00:00</div>
+                    
+                    <div class="instruction-container">
+                        <p id="termometro-instruction" class="instruction-text">Toque abaixo para iniciar a provocação</p>
+                    </div>
+
+                    <div class="termometro-controls centered">
+                        <button class="cta-btn start-btn glow-btn" id="termometro-main-btn" data-action="start-termometro">Iniciar Provocação 🔥</button>
+                        <button class="cta-btn stop-btn secondary-btn" id="termometro-stop-btn" data-action="stop-termometro" style="display: none;">Perdi o Controle! 🛑</button>
+                    </div>
                 </div>
             `;
         } else {
@@ -1601,6 +2057,14 @@ class GameController {
                 this.handleDiceRoll();
             } else if (action === 'dice-start-timer') {
                 this.handleDiceStartTimer();
+            } else if (action === 'start-termometro') {
+                this.handleStartTermometro();
+            } else if (action === 'stop-termometro') {
+                this.handleStopTermometro();
+            } else if (action === 'nav-category' || target.closest('[data-action="nav-category"]')) {
+                const categoryElement = action === 'nav-category' ? target : target.closest('[data-action="nav-category"]');
+                const viewName = categoryElement.dataset.view;
+                this.navigateTo(viewName);
             }
         });
     }
@@ -1610,8 +2074,10 @@ class GameController {
         localStorage.setItem('hub_currentView', viewName);
 
         let data = null;
-        if (viewName === 'games') {
-            data = this.model.games;
+        if (viewName === 'games-couple') {
+            data = this.model.games.filter(g => g.category.includes('couple'));
+        } else if (viewName === 'games-group') {
+            data = this.model.games.filter(g => g.category.includes('group'));
         }
 
         this.view.renderView(viewName, data);
@@ -2423,16 +2889,104 @@ class GameController {
             }
         });
     }
+
+    handleStartTermometro() {
+        const state = this.model.termometroState;
+        const deck = this.model.escaladaDeck;
+        state.isActive = true;
+        state.elapsedSeconds = 0;
+        state.instructionIndex = 0;
+
+        const mainBtn = document.getElementById('termometro-main-btn');
+        const stopBtn = document.getElementById('termometro-stop-btn');
+        const timerDisplay = document.getElementById('termometro-timer');
+        const instructionText = document.getElementById('termometro-instruction');
+        const progressBar = document.getElementById('termometro-progress-bar');
+
+        if (mainBtn) mainBtn.style.display = 'none';
+        if (stopBtn) {
+            stopBtn.style.display = 'block';
+            stopBtn.style.margin = '2rem auto 0 auto';
+        }
+        if (instructionText) {
+            instructionText.innerText = deck[0];
+            instructionText.classList.add('pop-in');
+        }
+
+        // Reset ProgressBar
+        if (progressBar) {
+            progressBar.style.width = '0%';
+            progressBar.style.backgroundColor = '#1e3a8a';
+        }
+
+        state.interval = setInterval(() => {
+            state.elapsedSeconds++;
+
+            // Atualizar Timer
+            const mins = Math.floor(state.elapsedSeconds / 60);
+            const secs = state.elapsedSeconds % 60;
+            if (timerDisplay) {
+                timerDisplay.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            // Atualizar Instrução (cada 45s)
+            if (state.elapsedSeconds > 0 && state.elapsedSeconds % 45 === 0) {
+                state.instructionIndex++;
+                if (state.instructionIndex < deck.length) {
+                    instructionText.style.opacity = '0';
+                    setTimeout(() => {
+                        instructionText.innerText = deck[state.instructionIndex];
+                        instructionText.style.opacity = '1';
+                    }, 500);
+                }
+            }
+
+            // Atualizar Barra de Progresso e Cor
+            const progress = Math.min(state.elapsedSeconds / 1125, 1);
+            const r = Math.round(30 + (progress * (127 - 30)));
+            const g = Math.round(58 + (progress * (29 - 58)));
+            const b = Math.round(138 + (progress * (29 - 138)));
+
+            if (progressBar) {
+                progressBar.style.width = `${progress * 100}%`;
+                progressBar.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            }
+        }, 1000);
+    }
+
+    handleStopTermometro() {
+        const state = this.model.termometroState;
+        clearInterval(state.interval);
+        state.isActive = false;
+
+        const mins = Math.floor(state.elapsedSeconds / 60);
+        const secs = state.elapsedSeconds % 60;
+
+        const instructionContainer = document.querySelector('.instruction-container');
+        const controls = document.querySelector('.termometro-controls');
+
+        if (instructionContainer) {
+            instructionContainer.innerHTML = `
+                <div class="termometro-result">
+                    <h3>Você resistiu por ${mins}m e ${secs}s.</h3>
+                    <h2 style="font-size: 2rem; margin-top: 1rem;">Agora, entregue-se! 🔥</h2>
+                </div>
+            `;
+        }
+
+        if (controls) {
+            controls.innerHTML = `
+                <button class="cta-btn secondary-btn" data-action="nav-games">Voltar ao Hub</button>
+            `;
+        }
+    }
 }
 
 // Inicialização
-
 document.addEventListener('DOMContentLoaded', () => {
     const model = new GameModel();
     const view = new GameView();
-    // Expor para a View acessar (como feito em outras partes do código legacy)
     window.gameModel = model;
-
     const app = new GameController(model, view);
     app.init();
 });

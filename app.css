@@ -245,6 +245,14 @@ body {
     box-shadow: 0 10px 20px rgba(255, 118, 117, 0.3);
 }
 
+.game-card.theme-red .cta-btn {
+    background-color: var(--danger-color);
+}
+
+.game-card.theme-red .cta-btn:hover {
+    box-shadow: 0 5px 15px rgba(255, 118, 117, 0.4);
+}
+
 .game-card.theme-blue {
     border-top: 5px solid var(--accent-color);
 }
@@ -255,6 +263,14 @@ body {
 
 .game-card.theme-blue:hover {
     box-shadow: 0 10px 20px rgba(0, 206, 201, 0.3);
+}
+
+.game-card.theme-blue .cta-btn {
+    background-color: var(--accent-color);
+}
+
+.game-card.theme-blue .cta-btn:hover {
+    box-shadow: 0 5px 15px rgba(0, 206, 201, 0.4);
 }
 
 .game-card.theme-yellow {
@@ -272,6 +288,15 @@ body {
     box-shadow: 0 10px 20px rgba(253, 203, 110, 0.4);
 }
 
+.game-card.theme-yellow .cta-btn {
+    background-color: var(--warning-color);
+    color: #2d3436;
+}
+
+.game-card.theme-yellow .cta-btn:hover {
+    box-shadow: 0 5px 15px rgba(253, 203, 110, 0.5);
+}
+
 .game-card.theme-gold {
     border-top: 5px solid #ffd700;
 }
@@ -282,6 +307,11 @@ body {
 
 .game-card.theme-gold:hover {
     box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
+}
+
+.game-card.theme-gold .cta-btn {
+    background-color: #ffd700;
+    color: #2d3436;
 }
 
 /* Game Interface Themes */
@@ -731,4 +761,112 @@ body {
 .timer-finished-bg {
     background-color: #c0392b !important;
     transition: background-color 0.5s ease;
+}
+
+/* --- Category Grid (Home) --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.category-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.category-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.category-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* --- Estilos Termômetro Corrigidos --- */
+.termometro-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.termometro-progress-container {
+    width: 100%;
+    max-width: 400px;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.termometro-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #1e3a8a;
+    /* Azul inicial */
+    transition: width 1s linear, background-color 1s linear;
+}
+
+#termometro-timer {
+    font-size: 8rem !important;
+    /* Cronômetro Gigante */
+    font-weight: 800;
+    color: var(--text-color);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.termometro-controls.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.instruction-container {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* --- Eclipse Social (Blue Theme Adjustments) --- */
+.theme-blue .game-card-display {
+    border-color: #3498db;
+    background: linear-gradient(135deg, #ebf5fb, #ffffff);
+}
+
+.theme-blue .card-type {
+    color: #2980b9;
 }

@@ -107,6 +107,14 @@ class GameModel {
                 theme: 'blue',
                 category: ['group']
             },
+            {
+                id: 'tabuleiro-seducao',
+                title: '🎲 Tabuleiro da Sedução',
+                description: 'Um jogo de trilha onde cada casa é um desafio. Trilha Azul para ele, Rosa para ela. <br><span style="color: var(--danger-color); font-weight: bold;">(Casais/Intenso)</span>',
+                type: 'board-game',
+                theme: 'marsala',
+                category: ['couple']
+            },
         ];
 
 
@@ -160,6 +168,62 @@ class GameModel {
             { category: 'Estratégico', text: 'Silêncio: Você não pode falar por 30 minutos' },
             { category: 'Estratégico', text: 'Espelho: O que você mandar eu fazer, você faz também' }
         ];
+
+        // --- Dados do Tabuleiro da Sedução ---
+        this.seductionBoardData = {
+            blue: [
+                "Elogie a parte do corpo dela que você mais gosta.",
+                "Dê um beijo demorado no pescoço e na nuca dela.",
+                "Faça uma massagem relaxante nos pés ou pernas dela.",
+                "Tire os sapatos e as meias dela.",
+                "Sussurre no ouvido dela com detalhes o que você quer fazer hoje.",
+                { type: 'punishment', text: "Punição: O clima esfriou. Volte 2 casas.", move: -2 },
+                "Dê beijos descendo do pescoço até a barriga dela.",
+                "Tire la blusa ou o vestido dela lentamente.",
+                { type: 'bonus', text: "Bônus: Escolha uma música sensual para tocar agora." },
+                "Faça uma massagem nas costas dela apenas com as pontas dos dedos.",
+                "Tire a sua própria camisa.",
+                "Ela Pede: Cumpra um desejo rápido que ela escolher agora.",
+                "Beije e provoque os seios dela por 1 minuto.",
+                "Tire a calça, saia ou short dela.",
+                "Tire a sua própria calça.",
+                "Tire a roupa íntima dela usando apenas a boca ou uma das mãos.",
+                "Provoque a intimidade dela com as mãos.",
+                { type: 'punishment', text: "Punição: Calma apressadinho. Volte 1 casa para provocar mais.", move: -1 },
+                "Faça sexo oral nela com dedicação até ela pedir para você parar.",
+                "Chegada: Façam amor na posição que ela escolher."
+            ],
+            pink: [
+                "Dê um beijo de cinema nele.",
+                "Faça carinho na nuca e puxe levemente o cabelo dele.",
+                "Conte no ouvido dele uma fantasia secreta sua.",
+                "Tire a camisa dele com provocação.",
+                "Morda levemente a orelha e o pescoço dele.",
+                { type: 'punishment', text: "Punição: O clima esfriou. Volte 2 casas.", move: -2 },
+                "Provoque-o passando as mãos por dentro da roupa dele.",
+                "Tire a sua própria blusa.",
+                { type: 'bonus', text: "Bônus: Ganhe uma massagem de 2 minutos onde você quiser." },
+                "Desabotoe a calça dele com muita calma, olhando nos olhos.",
+                "Beije o caminho do peitoral até a marca da calça dele.",
+                "Ele Pede: Cumpra um desejo rápido que ele escolher agora.",
+                "Tire a sua própria calça ou saia.",
+                "Faça uma massagem provocante nas coxas e na virilha dele.",
+                "Fique apenas de roupa íntima.",
+                "Tire a roupa íntima dele lentamente.",
+                "Provoque-o com toques, beijos e respiração na região íntima.",
+                { type: 'punishment', text: "Punição: Vamos prolongar o desejo. Volte 1 casa.", move: -1 },
+                "Faça sexo oral nele, controlando o ritmo como você preferir.",
+                "Chegada: Façam amor na posição que você escolher."
+            ]
+        };
+
+        this.seductionBoardState = {
+            bluePos: 0,
+            pinkPos: 0,
+            currentPlayer: 'blue', // Começa com o azul (homem) ou conforme a regra
+            lastMove: 0,
+            isFinished: false
+        };
 
         // --- Deck Mímica (40 Cartas) ---
         this.mimicDeck = [
@@ -1498,6 +1562,9 @@ class GameView {
             case 'game-playing':
                 this._renderGameInterface(data);
                 break; // Passa o objeto do jogo
+            case 'tabuleiro-seducao':
+                this._renderSeductionBoard(data);
+                break;
             case 'about':
                 this._renderAbout();
                 break;
@@ -1956,6 +2023,66 @@ class GameView {
         }, 200);
     }
 
+    _renderSeductionBoard(game) {
+        const state = window.gameModel.seductionBoardState;
+        const data = window.gameModel.seductionBoardData;
+
+        const section = document.createElement('section');
+        section.className = 'view active board-game-view';
+
+        const turnColorClass = state.currentPlayer === 'blue' ? 'turn-blue' : 'turn-pink';
+        const turnName = state.currentPlayer === 'blue' ? 'Vez do Homem' : 'Vez da Mulher';
+
+        section.innerHTML = `
+            <div class="board-game-container">
+                <div class="current-turn-info ${turnColorClass}" id="turn-indicator">
+                    ${turnName}
+                </div>
+
+                <div class="dice-result-container">
+                    <button class="cta-btn" data-action="board-roll-dice">Lançar Dado 🎲</button>
+                    <div id="board-dice-result" style="font-size: 3rem; font-weight: 800; color: var(--primary-color);"></div>
+                </div>
+
+                <div class="board-layout">
+                    <!-- Trilha Azul -->
+                    <div class="trail-container trail-blue">
+                        <h3 class="trail-title">Trilha Dele</h3>
+                        ${data.blue.map((tile, i) => this._createTileHtml(tile, i, 'blue', state.bluePos)).join('')}
+                    </div>
+
+                    <!-- Trilha Rosa -->
+                    <div class="trail-container trail-pink">
+                        <h3 class="trail-title">Trilha Dela</h3>
+                        ${data.pink.map((tile, i) => this._createTileHtml(tile, i, 'pink', state.pinkPos)).join('')}
+                    </div>
+                </div>
+
+                <button class="cta-btn secondary-btn" data-action="nav-games">Sair do Jogo</button>
+            </div>
+        `;
+        this.mainContent.appendChild(section);
+    }
+
+    _createTileHtml(tile, index, trailType, currentPos) {
+        const isCurrent = currentPos === index;
+        const text = typeof tile === 'string' ? tile : tile.text;
+        const typeClass = tile.type || '';
+        const marker = isCurrent ? `<div class="player-marker">${trailType === 'blue' ? '👔' : '👠'}</div>` : '';
+
+        let specialClass = '';
+        if (index === 0) specialClass = 'start-tile';
+        else if (index === 19) specialClass = 'finish-tile';
+
+        return `
+            <div class="board-tile ${specialClass} ${typeClass} ${isCurrent ? 'active-tile' : ''}">
+                <div class="tile-number">${index + 1}</div>
+                <div class="tile-text">${text}</div>
+                ${marker}
+            </div>
+        `;
+    }
+
     _renderAbout() {
         const section = document.createElement('section');
         section.className = 'view active';
@@ -2065,8 +2192,70 @@ class GameController {
                 const categoryElement = action === 'nav-category' ? target : target.closest('[data-action="nav-category"]');
                 const viewName = categoryElement.dataset.view;
                 this.navigateTo(viewName);
+            } else if (action === 'board-roll-dice') {
+                this.handleBoardDiceRoll();
             }
         });
+    }
+
+    handleBoardDiceRoll() {
+        if (this.model.seductionBoardState.isFinished) return;
+
+        const state = this.model.seductionBoardState;
+        const diceBtn = document.querySelector('[data-action="board-roll-dice"]');
+        const resultDisplay = document.getElementById('board-dice-result');
+
+        if (diceBtn) diceBtn.disabled = true;
+
+        const rollSelection = Math.floor(Math.random() * 6) + 1;
+
+        // Simulação de animação
+        let count = 0;
+        const interval = setInterval(() => {
+            resultDisplay.innerText = Math.floor(Math.random() * 6) + 1;
+            count++;
+            if (count > 10) {
+                clearInterval(interval);
+                resultDisplay.innerText = rollSelection;
+                this.movePlayer(rollSelection);
+                if (diceBtn) diceBtn.disabled = false;
+            }
+        }, 50);
+    }
+
+    movePlayer(steps) {
+        const state = this.model.seductionBoardState;
+        const player = state.currentPlayer; // 'blue' or 'pink'
+        const posKey = player === 'blue' ? 'bluePos' : 'pinkPos';
+        const trailData = this.model.seductionBoardData[player];
+
+        let newPos = state[posKey] + steps;
+        if (newPos > 19) newPos = 19;
+
+        // Verificar se é casa de punição
+        const tile = trailData[newPos];
+        if (typeof tile === 'object' && tile.move) {
+            setTimeout(() => {
+                alert(tile.text);
+                state[posKey] = Math.max(0, newPos + tile.move);
+                this.nextTurn();
+            }, 1000);
+            state[posKey] = newPos; // Move para a punição antes de voltar
+        } else {
+            state[posKey] = newPos;
+            if (newPos === 19) {
+                state.isFinished = true;
+                setTimeout(() => alert("🏅 CHEGADA! " + (player === 'blue' ? "Homem" : "Mulher") + " venceu! Cumprem o desafio final!"), 500);
+            }
+            this.nextTurn();
+        }
+
+        this.view.renderView('tabuleiro-seducao', this.model.getGame('tabuleiro-seducao'));
+    }
+
+    nextTurn() {
+        const state = this.model.seductionBoardState;
+        state.currentPlayer = state.currentPlayer === 'blue' ? 'pink' : 'blue';
     }
 
     navigateTo(viewName) {

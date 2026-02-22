@@ -1664,7 +1664,7 @@ class GameView {
                             <small style="color: var(--text-light);">segundos</small>
                         </div>
                     </div>
-                
+
                     <div class="game-card-display mimic-card" id="active-card" style="cursor: pointer; min-height: 300px;" data-action="reveal-mimic">
                         <div class="card-front" style="text-align: center;">
                             <p class="card-type" style="margin-bottom: 2rem;">Toque para revelar a mímica</p>
@@ -1742,7 +1742,7 @@ class GameView {
                                 <span>💰 P1: ${saldoP1}</span>
                                 <span>💰 P2: ${saldoP2}</span>
                             </div>
-                            
+
                             <div class="game-card-display" id="active-card" style="border-color: #ffd700; background: linear-gradient(135deg, #fff, #fff8e1);">
                                 <p class="card-type" style="color: #d4ac0d;">${currentItem ? currentItem.category : 'Carregando...'}</p>
                                 <h3 class="card-text" style="color: #2c3e50;">${currentItem ? currentItem.text : '...'}</h3>
@@ -1846,7 +1846,7 @@ class GameView {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div id="roulette-result" class="roulette-result" style="display: none;">
                         <h3 id="result-text">Girando...</h3>
                     </div>
@@ -1865,7 +1865,7 @@ class GameView {
                                 Veto 🚫 (<span id="veto-count">3</span>)
                         </button>
                     </div>
-                    
+
                     <div class="heat-indicator">
                         Nível de Calor: <span id="heat-level" style="color: var(--accent-color); font-weight: bold;">Low Heat ❄️</span>
                     </div>
@@ -1934,13 +1934,13 @@ class GameView {
             section.innerHTML = `
                 <div id="termometro-app" class="termometro-wrapper">
                     <h2 class="termometro-title">${game.title}</h2>
-                    
+
                     <div class="termometro-progress-container">
                         <div id="termometro-progress-bar" class="termometro-progress-bar"></div>
                     </div>
 
                     <div class="termometro-timer-display" id="termometro-timer">00:00</div>
-                    
+
                     <div class="instruction-container">
                         <p id="termometro-instruction" class="instruction-text">Toque abaixo para iniciar a provocação</p>
                     </div>
@@ -2030,55 +2030,70 @@ class GameView {
         const section = document.createElement('section');
         section.className = 'view active board-game-view';
 
-        const turnColorClass = state.currentPlayer === 'blue' ? 'turn-blue' : 'turn-pink';
+        const turnColorClass = state.currentPlayer === 'blue' ? 'blue' : 'pink';
         const turnName = state.currentPlayer === 'blue' ? 'Vez do Homem' : 'Vez da Mulher';
+
+        // Mapeamento para layout Snake (zigue-zague em 4 colunas)
+        const snakeMap = [0, 1, 2, 3, 7, 6, 5, 4, 8, 9, 10, 11, 15, 14, 13, 12, 16, 17, 18, 19];
 
         section.innerHTML = `
             <div class="board-game-container">
-                <div class="current-turn-info ${turnColorClass}" id="turn-indicator">
-                    ${turnName}
-                </div>
-
-                <div class="dice-result-container">
-                    <button class="cta-btn" data-action="board-roll-dice">Lançar Dado 🎲</button>
-                    <div id="board-dice-result" style="font-size: 3rem; font-weight: 800; color: var(--primary-color);"></div>
-                </div>
-
-                <div class="board-layout">
-                    <!-- Trilha Azul -->
-                    <div class="trail-container trail-blue">
-                        <h3 class="trail-title">Trilha Dele</h3>
-                        ${data.blue.map((tile, i) => this._createTileHtml(tile, i, 'blue', state.bluePos)).join('')}
-                    </div>
-
-                    <!-- Trilha Rosa -->
-                    <div class="trail-container trail-pink">
-                        <h3 class="trail-title">Trilha Dela</h3>
-                        ${data.pink.map((tile, i) => this._createTileHtml(tile, i, 'pink', state.pinkPos)).join('')}
+                <div class="board-info-header">
+                    <div class="turn-banner ${turnColorClass}" id="turn-indicator">
+                        ${turnName}
                     </div>
                 </div>
 
-                <button class="cta-btn secondary-btn" data-action="nav-games">Sair do Jogo</button>
+                <div class="board-dice-area">
+                    <button class="cta-btn gold-btn" data-action="board-roll-dice" style="background: linear-gradient(135deg, #D4AF37, #800020); color: #fff; padding: 1.2rem 3.5rem; font-size: 1.3rem; border-radius: 50px; font-weight: 800; border: 2px solid #D4AF37; box-shadow: 0 10px 25px rgba(128,0,32,0.5); cursor: pointer; transition: all 0.3s ease;">Lançar Dado 🎲</button>
+                    <div id="board-dice-result" class="dice-val-luxury"></div>
+                </div>
+
+                <div class="board-snakes-layout">
+                    <!-- Trilha Dele -->
+                    <div class="trail-section trail-blue">
+                        <h3 class="trail-title-luxury">Trilha Dele</h3>
+                        <div class="board-grid">
+                            ${snakeMap.map(index => this._createTileHtml(data.blue[index], index, 'blue', state.bluePos)).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Trilha Dela -->
+                    <div class="trail-section trail-pink">
+                        <h3 class="trail-title-luxury">Trilha Dela</h3>
+                        <div class="board-grid">
+                            ${snakeMap.map(index => this._createTileHtml(data.pink[index], index, 'pink', state.pinkPos)).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <button class="cta-btn text-btn" data-action="nav-games" style="margin-top: 2rem; color: #aaa; background: none; border: none; font-size: 1rem; cursor: pointer;">Sair do Jogo</button>
             </div>
         `;
         this.mainContent.appendChild(section);
     }
 
     _createTileHtml(tile, index, trailType, currentPos) {
+        if (!tile) return '';
         const isCurrent = currentPos === index;
         const text = typeof tile === 'string' ? tile : tile.text;
         const typeClass = tile.type || '';
-        const marker = isCurrent ? `<div class="player-marker">${trailType === 'blue' ? '👔' : '👠'}</div>` : '';
+
+        const marker = isCurrent ? `<div class="player-pawn">${trailType === 'blue' ? '👔' : '👠'}</div>` : '';
 
         let specialClass = '';
         if (index === 0) specialClass = 'start-tile';
         else if (index === 19) specialClass = 'finish-tile';
 
         return `
-            <div class="board-tile ${specialClass} ${typeClass} ${isCurrent ? 'active-trail' : ''}">
-                <div class="tile-number">${index + 1}</div>
-                <div class="tile-text">${text}</div>
+            <div class="board-tile-luxury ${specialClass} ${typeClass} ${isCurrent ? 'active-trail' : ''}" data-index="${index}">
+                <span class="tile-num-float">${index + 1}</span>
                 ${marker}
+                ${!isCurrent && index === 0 ? '<span style="font-size: 1.5rem">🏁</span>' : ''}
+                ${!isCurrent && index === 19 ? '<span style="font-size: 1.5rem">🏆</span>' : ''}
+                <div class="tile-hover-content">
+                    ${text}
+                </div>
             </div>
         `;
     }
@@ -2281,7 +2296,7 @@ class GameController {
             currentCardIndex: 0,
             shuffledDeck: [...this.model.binaryWishesDeck] // Cópia simples, ordem fixa para P1
         };
-        // Opcional: Embaralhar para o jogo ser sempre diferente? 
+        // Opcional: Embaralhar para o jogo ser sempre diferente?
         // A prompt diz "Jogador 2 responde às mesmas 20 cartas (em ordem aleatória)".
         // Então P1 vê ordem X, P2 vê ordem aleatória Y, mas precisamos saber qual carta é qual.
         // Melhor manter índices fixos do deck original para comparação.
@@ -2824,7 +2839,7 @@ class GameController {
             // Se for Esquenta, já tira uma carta ou prepara
             if (gameId === 'esquenta') {
                 // Opcional: já sortear uma carta inicial
-                // this.drawNextCard(); 
+                // this.drawNextCard();
                 // Deixando manual para o usuário clicar em "Iniciar/Proxima"
             }
         }

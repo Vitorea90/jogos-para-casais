@@ -1562,6 +1562,14 @@ class GameView {
         // Limpar conteúdo atual
         this.mainContent.innerHTML = '';
 
+        // Ativar/Desativar Modo Imersivo (esconde sidebar/header)
+        const appContainer = document.querySelector('.app-container');
+        if (viewName === 'tabuleiro-seducao') {
+            appContainer.classList.add('immersive-mode');
+        } else {
+            appContainer.classList.remove('immersive-mode');
+        }
+
         // Atualizar navegação
         this.navLinks.forEach(link => {
             link.classList.remove('active');
@@ -2053,50 +2061,47 @@ class GameView {
         const turnColorClass = state.currentPlayer === 'blue' ? 'blue' : 'pink';
         const turnName = state.currentPlayer === 'blue' ? 'Vez do Homem' : 'Vez da Mulher';
 
-        // Mapeamento para layout Snake (zigue-zague em 4 colunas - 30 casas)
-        const snakeMap = [
-            0, 1, 2, 3,
-            7, 6, 5, 4,
-            8, 9, 10, 11,
-            15, 14, 13, 12,
-            16, 17, 18, 19,
-            23, 22, 21, 20,
-            24, 25, 26, 27,
-            28, 29 // 30 casas (indices 0 a 29)
-        ];
+        // Layout Artístico Unificado (Snake 10x6 para 60 slots, usaremos 30 para cada ou 60 intercalados)
+        // Para ser "Single Screen", vamos criar um grid compacto onde as duas trilhas coexistem de forma artística.
+
+        // Mapeamento Snake 10 colunas
+        const snakeMap = [];
+        for (let row = 0; row < 6; row++) {
+            const rowIndices = [];
+            for (let col = 0; col < 10; col++) {
+                rowIndices.push(row * 10 + col);
+            }
+            if (row % 2 !== 0) rowIndices.reverse();
+            snakeMap.push(...rowIndices);
+        }
 
         section.innerHTML = `
+            <div class="turn-banner-hud ${turnColorClass}" id="turn-indicator">
+                ${turnName}
+            </div>
+
             <div class="board-game-container">
-                <div class="board-info-header">
-                    <div class="turn-banner ${turnColorClass}" id="turn-indicator">
-                        ${turnName}
+                <div class="board-unified-layout">
+                    <div class="board-grid-artistic">
+                        ${snakeMap.map(i => {
+            // Intercalar as trilhas: i par = Blue, i impar = Pink (ou vice-versa)
+            // Cada trilha tem 30 casas. Total 60.
+            const indexInTrail = Math.floor(i / 2);
+            const isBlueTile = i % 2 === 0;
+            const trailType = isBlueTile ? 'blue' : 'pink';
+            const trailData = data[trailType];
+            const currentPos = isBlueTile ? state.bluePos : state.pinkPos;
+
+            return this._createTileHtml(trailData[indexInTrail], indexInTrail, trailType, currentPos);
+        }).join('')}
                     </div>
                 </div>
 
-                <div class="board-dice-area">
-                    <button class="cta-btn gold-btn" data-action="board-roll-dice" style="background: linear-gradient(135deg, #D4AF37, #800020); color: #fff; padding: 1.2rem 3.5rem; font-size: 1.3rem; border-radius: 50px; font-weight: 800; border: 2px solid #D4AF37; box-shadow: 0 10px 25px rgba(128,0,32,0.5); cursor: pointer; transition: all 0.3s ease;">Lançar Dado 🎲</button>
-                    <div id="board-dice-result" class="dice-val-luxury"></div>
+                <div class="board-dice-hud">
+                    <div id="board-dice-result" class="dice-val-luxury">?</div>
+                    <button class="cta-btn gold-btn" data-action="board-roll-dice" style="background: linear-gradient(135deg, #D4AF37, #800020); color: #fff; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 800; border: 1px solid #D4AF37; cursor: pointer;">Girar Dado 🎲</button>
+                    <button class="cta-btn text-btn" data-action="nav-games" style="margin-top: 0.5rem; color: #fff; background: none; border: none; font-size: 0.8rem; cursor: pointer; opacity: 0.6;">Sair do Jogo</button>
                 </div>
-
-                <div class="board-snakes-layout">
-                    <!-- Trilha Dele -->
-                    <div class="trail-section trail-blue">
-                        <h3 class="trail-title-luxury">Trilha Dele</h3>
-                        <div class="board-grid">
-                            ${snakeMap.map(index => this._createTileHtml(data.blue[index], index, 'blue', state.bluePos)).join('')}
-                        </div>
-                    </div>
-
-                    <!-- Trilha Dela -->
-                    <div class="trail-section trail-pink">
-                        <h3 class="trail-title-luxury">Trilha Dela</h3>
-                        <div class="board-grid">
-                            ${snakeMap.map(index => this._createTileHtml(data.pink[index], index, 'pink', state.pinkPos)).join('')}
-                        </div>
-                    </div>
-                </div>
-
-                <button class="cta-btn text-btn" data-action="nav-games" style="margin-top: 0.5rem; color: #aaa; background: none; border: none; font-size: 0.9rem; cursor: pointer;">Sair do Jogo</button>
             </div>
         `;
         this.mainContent.appendChild(section);

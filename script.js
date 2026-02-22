@@ -2096,7 +2096,7 @@ class GameView {
                     </div>
                 </div>
 
-                <button class="cta-btn text-btn" data-action="nav-games" style="margin-top: 2rem; color: #aaa; background: none; border: none; font-size: 1rem; cursor: pointer;">Sair do Jogo</button>
+                <button class="cta-btn text-btn" data-action="nav-games" style="margin-top: 0.5rem; color: #aaa; background: none; border: none; font-size: 0.9rem; cursor: pointer;">Sair do Jogo</button>
             </div>
         `;
         this.mainContent.appendChild(section);

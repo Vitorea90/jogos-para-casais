@@ -191,7 +191,17 @@ class GameModel {
                 "Provoque a intimidade dela com as mãos.",
                 { type: 'punishment', text: "Punição: Calma apressadinho. Volte 1 casa para provocar mais.", move: -1 },
                 "Faça sexo oral nela com dedicação até ela pedir para você parar.",
-                "Chegada: Façam amor na posição que ela escolher."
+                "Use uma venda nos olhos dela e provoque-a com algo gelado ou morno.",
+                "Retire sua própria roupa íntima agora mesmo.",
+                "Descreva detalhadamente como você vai fazê-la chegar lá.",
+                "Beije-a apaixonadamente enquanto as mãos exploram cada curva.",
+                { type: 'bonus', text: "Bônus: Sua pegada é incrível! Avance 2 casas.", move: 2 },
+                "Morda levemente a parte interna das coxas dela.",
+                { type: 'punishment', text: "Punição: Muito rápido! Volte 2 casas para saborear cada detalhe.", move: -2 },
+                "Use a língua para desenhar caminhos de prazer no corpo dela.",
+                "Deixe-a no comando por 2 minutos, apenas recebendo o que ela quiser.",
+                "Sussurre sua fantasia mais sombria no ouvido dela.",
+                "Chegada: Êxtase total na posição que você mais gosta."
             ],
             pink: [
                 "Dê um beijo de cinema nele.",
@@ -213,7 +223,17 @@ class GameModel {
                 "Provoque-o com toques, beijos e respiração na região íntima.",
                 { type: 'punishment', text: "Punição: Vamos prolongar o desejo. Volte 1 casa.", move: -1 },
                 "Faça sexo oral nele, controlando o ritmo como você preferir.",
-                "Chegada: Façam amor na posição que você escolher."
+                "Sussurre uma fantasia que te deixa molhada só de pensar.",
+                "Retire a sua própria roupa íntima com um olhar fatal.",
+                "Use as mãos para explorá-lo enquanto sussurra palavras de desejo.",
+                "Provoque-o até que ele não consiga mais ficar parado.",
+                { type: 'bonus', text: "Bônus: Você está impossível! Avance 3 casas.", move: 3 },
+                "Escolha um lugar sensível dele e use apenas a ponta da língua.",
+                { type: 'punishment', text: "Punição: Ele está perdendo o controle. Volte 2 casas para torturá-lo mais.", move: -2 },
+                "Comande a situação: coloque-o onde você quer e faça o que desejar.",
+                "Use o seu corpo para envolvê-lo em uma dança privativa rápida.",
+                "Revele o que você quer que ele faça com você agora mesmo.",
+                "Chegada: Êxtase total na posição que você sempre quis tentar."
             ]
         };
 
@@ -2033,8 +2053,17 @@ class GameView {
         const turnColorClass = state.currentPlayer === 'blue' ? 'blue' : 'pink';
         const turnName = state.currentPlayer === 'blue' ? 'Vez do Homem' : 'Vez da Mulher';
 
-        // Mapeamento para layout Snake (zigue-zague em 4 colunas)
-        const snakeMap = [0, 1, 2, 3, 7, 6, 5, 4, 8, 9, 10, 11, 15, 14, 13, 12, 16, 17, 18, 19];
+        // Mapeamento para layout Snake (zigue-zague em 4 colunas - 30 casas)
+        const snakeMap = [
+            0, 1, 2, 3,
+            7, 6, 5, 4,
+            8, 9, 10, 11,
+            15, 14, 13, 12,
+            16, 17, 18, 19,
+            23, 22, 21, 20,
+            24, 25, 26, 27,
+            29, 28 // 30 casas (indices 0 a 29)
+        ];
 
         section.innerHTML = `
             <div class="board-game-container">
@@ -2090,7 +2119,7 @@ class GameView {
                 <span class="tile-num-float">${index + 1}</span>
                 ${marker}
                 ${!isCurrent && index === 0 ? '<span style="font-size: 1.5rem">🏁</span>' : ''}
-                ${!isCurrent && index === 19 ? '<span style="font-size: 1.5rem">🏆</span>' : ''}
+                ${!isCurrent && index === 29 ? '<span style="font-size: 1.5rem">🏆</span>' : ''}
                 <div class="tile-hover-content">
                     ${text}
                 </div>
@@ -2245,20 +2274,27 @@ class GameController {
         const trailData = this.model.seductionBoardData[player];
 
         let newPos = state[posKey] + steps;
-        if (newPos > 19) newPos = 19;
+        if (newPos > 29) newPos = 29;
 
-        // Verificar se é casa de punição
+        // Verificar se é casa especial (punição ou bônus com movimento)
         const tile = trailData[newPos];
         if (typeof tile === 'object' && tile.move) {
             setTimeout(() => {
                 alert(tile.text);
-                state[posKey] = Math.max(0, newPos + tile.move);
+                state[posKey] = Math.max(0, Math.min(29, newPos + tile.move));
+
+                // Se o bônus levou à vitória
+                if (state[posKey] === 29) {
+                    state.isFinished = true;
+                    setTimeout(() => alert("🏅 CHEGADA! " + (player === 'blue' ? "Homem" : "Mulher") + " venceu! Cumprem o desafio final!"), 500);
+                }
+
                 this.nextTurn();
             }, 1000);
-            state[posKey] = newPos; // Move para a punição antes de voltar
+            state[posKey] = newPos; // Move para a casa especial antes de aplicar o efeito
         } else {
             state[posKey] = newPos;
-            if (newPos === 19) {
+            if (newPos === 29) {
                 state.isFinished = true;
                 setTimeout(() => alert("🏅 CHEGADA! " + (player === 'blue' ? "Homem" : "Mulher") + " venceu! Cumprem o desafio final!"), 500);
             }

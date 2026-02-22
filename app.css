@@ -930,24 +930,55 @@ body {
 
 .board-unified-layout {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 3rem;
     flex: 1;
     width: 100%;
     position: relative;
+    padding: 0 2rem;
+}
+
+.trail-artistic-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.trail-label-artistic {
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 5px 20px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trail-blue .trail-label-artistic {
+    color: #3498db;
+    border-color: rgba(52, 152, 219, 0.3);
+}
+
+.trail-pink .trail-label-artistic {
+    color: #e84393;
+    border-color: rgba(232, 67, 147, 0.3);
 }
 
 .board-grid-artistic {
     display: grid;
-    grid-template-columns: repeat(10, 60px);
-    grid-template-rows: repeat(6, 60px);
+    grid-template-columns: repeat(5, 55px);
+    grid-template-rows: repeat(6, 55px);
     grid-gap: 8px;
-    padding: 40px;
+    padding: 25px;
     background: linear-gradient(145deg, rgba(40, 40, 40, 0.4), rgba(10, 10, 10, 0.6));
-    border-radius: 50px;
+    border-radius: 30px;
     border: 2px solid rgba(212, 175, 55, 0.2);
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9),
-        inset 0 0 80px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9),
+        inset 0 0 40px rgba(0, 0, 0, 0.8);
     position: relative;
     backdrop-filter: blur(5px);
 }

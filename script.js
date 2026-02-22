@@ -2061,18 +2061,15 @@ class GameView {
         const turnColorClass = state.currentPlayer === 'blue' ? 'blue' : 'pink';
         const turnName = state.currentPlayer === 'blue' ? 'Vez do Homem' : 'Vez da Mulher';
 
-        // Layout Artístico Unificado (Snake 10x6 para 60 slots, usaremos 30 para cada ou 60 intercalados)
-        // Para ser "Single Screen", vamos criar um grid compacto onde as duas trilhas coexistem de forma artística.
-
-        // Mapeamento Snake 10 colunas
-        const snakeMap = [];
+        // Mapeamento Snake para grid 5x6 (30 casas)
+        const snakeMap5x6 = [];
         for (let row = 0; row < 6; row++) {
             const rowIndices = [];
-            for (let col = 0; col < 10; col++) {
-                rowIndices.push(row * 10 + col);
+            for (let col = 0; col < 5; col++) {
+                rowIndices.push(row * 5 + col);
             }
             if (row % 2 !== 0) rowIndices.reverse();
-            snakeMap.push(...rowIndices);
+            snakeMap5x6.push(...rowIndices);
         }
 
         section.innerHTML = `
@@ -2082,18 +2079,20 @@ class GameView {
 
             <div class="board-game-container">
                 <div class="board-unified-layout">
-                    <div class="board-grid-artistic">
-                        ${snakeMap.map(i => {
-            // Intercalar as trilhas: i par = Blue, i impar = Pink (ou vice-versa)
-            // Cada trilha tem 30 casas. Total 60.
-            const indexInTrail = Math.floor(i / 2);
-            const isBlueTile = i % 2 === 0;
-            const trailType = isBlueTile ? 'blue' : 'pink';
-            const trailData = data[trailType];
-            const currentPos = isBlueTile ? state.bluePos : state.pinkPos;
+                    <!-- Trilha Dele -->
+                    <div class="trail-artistic-section trail-blue">
+                        <div class="trail-label-artistic">Dele</div>
+                        <div class="board-grid-artistic">
+                            ${snakeMap5x6.map(index => this._createTileHtml(data.blue[index], index, 'blue', state.bluePos)).join('')}
+                        </div>
+                    </div>
 
-            return this._createTileHtml(trailData[indexInTrail], indexInTrail, trailType, currentPos);
-        }).join('')}
+                    <!-- Trilha Dela -->
+                    <div class="trail-artistic-section trail-pink">
+                        <div class="trail-label-artistic">Dela</div>
+                        <div class="board-grid-artistic">
+                            ${snakeMap5x6.map(index => this._createTileHtml(data.pink[index], index, 'pink', state.pinkPos)).join('')}
+                        </div>
                     </div>
                 </div>
 

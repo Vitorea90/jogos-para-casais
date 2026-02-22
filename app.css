@@ -311,27 +311,27 @@ body {
     color: #2d3436;
 }
 
-/* Theme Marsala (Premium Board) */
+/* Theme Marsala (Premium Board) - Harmonized with standard red */
 .game-card.theme-marsala {
-    border-top: 5px solid #800020;
+    border-top: 5px solid var(--danger-color);
 }
 
 .game-card.theme-marsala .game-title {
-    color: #800020;
+    color: var(--danger-color);
 }
 
 .game-card.theme-marsala:hover {
-    box-shadow: 0 10px 20px rgba(128, 0, 32, 0.4);
+    box-shadow: 0 10px 20px rgba(255, 118, 117, 0.4);
 }
 
 .game-card.theme-marsala .cta-btn {
-    background-color: #800020;
+    background-color: var(--danger-color);
     color: #fff;
 }
 
 /* Interface Styles */
 .game-interface.theme-marsala h2 {
-    color: #800020;
+    color: var(--danger-color);
 }
 
 .game-interface.theme-red h2 {
@@ -771,7 +771,7 @@ body {
 }
 
 .timer-finished-bg {
-    background-color: #c0392b !important;
+    background-color: var(--danger-color) !important;
     transition: background-color 0.5s ease;
 }
 
@@ -883,7 +883,7 @@ body {
 
 /* --- Tabuleiro da Sedução (Premium Redesign: Snake Board) --- */
 .board-game-view {
-    background: radial-gradient(circle at center, #2d0008 0%, #000 100%) !important;
+    background: radial-gradient(circle at center, #4a0005 0%, #000 100%) !important;
     min-height: 100vh;
     padding: 2rem 1rem;
     color: #fff;
@@ -901,7 +901,7 @@ body {
 
 .board-info-header {
     text-align: center;
-    background: rgba(128, 0, 32, 0.1);
+    background: rgba(255, 118, 117, 0.1);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(212, 175, 55, 0.3);
     padding: 1.5rem 3rem;
@@ -1058,7 +1058,7 @@ body {
 
 .board-tile-luxury.punishment {
     border-color: #ff5252;
-    background: linear-gradient(135deg, #3d0a0a, #111);
+    background: linear-gradient(135deg, #601010, #111);
 }
 
 .board-tile-luxury.punishment::after {
@@ -1071,7 +1071,7 @@ body {
 }
 
 .board-tile-luxury.finish-tile {
-    background: linear-gradient(135deg, #D4AF37, #800020) !important;
+    background: linear-gradient(135deg, #D4AF37, var(--danger-color)) !important;
     border: 3px solid #fff;
     animation: luxuryShining 3s infinite;
 }

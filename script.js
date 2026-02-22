@@ -79,7 +79,7 @@ class GameModel {
             {
                 id: 'termometro-prazer',
                 title: '🌡️ Termômetro do Prazer',
-                description: 'Resista à provocação enquanto a temperatura sobe. O fundo muda de cor conforme a tensão aumenta! <br><span style="color: #7f1d1d; font-weight: bold;">(Casais/Resistência)</span>',
+                description: 'Resista à provocação enquanto a temperatura sobe. O fundo muda de cor conforme a tensão aumenta! <br><span style="color: var(--danger-color); font-weight: bold;">(Casais/Resistência)</span>',
                 theme: 'red',
                 category: ['couple']
             },

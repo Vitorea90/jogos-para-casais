@@ -2062,7 +2062,7 @@ class GameView {
             16, 17, 18, 19,
             23, 22, 21, 20,
             24, 25, 26, 27,
-            29, 28 // 30 casas (indices 0 a 29)
+            28, 29 // 30 casas (indices 0 a 29)
         ];
 
         section.innerHTML = `

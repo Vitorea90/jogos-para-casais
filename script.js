@@ -2075,7 +2075,7 @@ class GameView {
         else if (index === 19) specialClass = 'finish-tile';
 
         return `
-            <div class="board-tile ${specialClass} ${typeClass} ${isCurrent ? 'active-tile' : ''}">
+            <div class="board-tile ${specialClass} ${typeClass} ${isCurrent ? 'active-trail' : ''}">
                 <div class="tile-number">${index + 1}</div>
                 <div class="tile-text">${text}</div>
                 ${marker}
@@ -2112,7 +2112,7 @@ class GameController {
 
     init() {
         // Renderizar view inicial salva ou home
-        if (this.model.currentView === 'game-playing' && this.model.currentGameId) {
+        if ((this.model.currentView === 'game-playing' || this.model.currentView === 'tabuleiro-seducao') && this.model.currentGameId) {
             this.playGame(this.model.currentGameId);
         } else {
             this.navigateTo(this.model.currentView);
@@ -2805,8 +2805,9 @@ class GameController {
         if (game) {
             this.model.currentGameId = gameId;
             localStorage.setItem('hub_currentGameId', gameId);
-            this.model.currentView = 'game-playing';
-            localStorage.setItem('hub_currentView', 'game-playing');
+            const viewName = gameId === 'tabuleiro-seducao' ? 'tabuleiro-seducao' : 'game-playing';
+            this.model.currentView = viewName;
+            localStorage.setItem('hub_currentView', viewName);
 
             if (gameId === 'eu-nunca') {
                 this.model.startEuNuncaGame();
@@ -2818,7 +2819,7 @@ class GameController {
                 this.model.initDiceGame();
             }
 
-            this.view.renderView('game-playing', game);
+            this.view.renderView(viewName, game);
 
             // Se for Esquenta, já tira uma carta ou prepara
             if (gameId === 'esquenta') {

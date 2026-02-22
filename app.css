@@ -314,7 +314,29 @@ body {
     color: #2d3436;
 }
 
-/* Game Interface Themes */
+/* Theme Marsala (Premium Board) */
+.game-card.theme-marsala {
+    border-top: 5px solid #800020;
+}
+
+.game-card.theme-marsala .game-title {
+    color: #800020;
+}
+
+.game-card.theme-marsala:hover {
+    box-shadow: 0 10px 20px rgba(128, 0, 32, 0.4);
+}
+
+.game-card.theme-marsala .cta-btn {
+    background-color: #800020;
+    color: #fff;
+}
+
+/* Interface Styles */
+.game-interface.theme-marsala h2 {
+    color: #800020;
+}
+
 .game-interface.theme-red h2 {
     color: var(--danger-color);
 }
